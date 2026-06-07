@@ -587,83 +587,58 @@ body {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 30px 25px;
+    padding: 24px;
     box-shadow: var(--shadow-card);
-    position: relative;
-    overflow: hidden;
+    transition: all var(--transition-speed) ease;
 }
 
 .skill-card:hover {
-    border-color: var(--border-color-hover);
+    border-color: var(--accent);
     box-shadow: var(--glow);
+    transform: translateY(-2px);
 }
 
-.skill-icon-wrapper {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(var(--accent-rgb), 0.1);
-    color: var(--accent);
+.skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.skill-card-icon {
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.05);
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-speed) ease;
+}
+
+.skill-card:hover .skill-card-icon {
+    background: rgba(var(--accent-rgb), 0.1);
     box-shadow: var(--glow);
 }
 
-.skill-icon-wrapper svg {
-    width: 22px;
-    height: 22px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+.skill-card-icon svg {
+    width: 18px;
+    height: 18px;
 }
 
 .skill-card-title {
     font-size: 1.05rem;
     font-weight: 700;
     font-family: var(--font-header);
-    margin-bottom: 25px;
-}
-
-.skill-items-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.skill-pill {
-    background: rgba(var(--accent-rgb), 0.05);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-sm);
-    padding: 10px 14px;
-    font-size: 0.85rem;
-    font-weight: 600;
     color: var(--text-primary);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 0;
 }
 
-.skill-pill:hover {
-    border-color: var(--accent);
-    background: rgba(var(--accent-rgb), 0.1);
-    box-shadow: var(--glow);
-}
-
-.skill-pill-name {
-    font-family: var(--font-mono);
-}
-
-.skill-level-indicator {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: var(--glow-strong);
+.skill-card-desc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 
@@ -821,107 +796,106 @@ body {
    EXPERIENCE / QUEST LOG
    ========================================================================== */
 
-.timeline-container {
+.experience-timeline {
     position: relative;
-    padding-left: 35px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.timeline-container::before {
+.experience-timeline::before {
     content: '';
     position: absolute;
-    left: 4px;
+    left: 170px;
     top: 5px;
     width: 2px;
-    height: calc(100% - 15px);
+    height: calc(100% - 25px);
     background-color: var(--border-color);
 }
 
-.timeline-item {
-    position: relative;
-    margin-bottom: 40px;
+.experience-item {
+    display: grid;
+    grid-template-columns: 150px 42px 1fr;
+    margin-bottom: 45px;
+    align-items: start;
 }
 
-.timeline-item:last-child {
+.experience-item:last-child {
     margin-bottom: 0;
 }
 
-.timeline-marker {
-    position: absolute;
-    left: -35px;
-    top: 5px;
+.experience-date {
+    text-align: right;
+    padding-top: 4px;
+}
+
+.experience-date-text {
+    font-family: var(--font-header);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    background: rgba(var(--accent-rgb), 0.05);
+    border: 1px solid var(--border-color);
+    padding: 4px 10px;
+    border-radius: var(--border-radius-sm);
+    display: inline-block;
+}
+
+.experience-marker {
     width: 10px;
     height: 10px;
-    border-radius: 50%;
     background: var(--bg-main);
     border: 2px solid var(--accent);
-    box-shadow: var(--glow);
+    border-radius: 50%;
+    margin: 10px auto 0 auto;
     z-index: 10;
+    box-shadow: var(--glow);
+    transition: all var(--transition-speed) ease;
 }
 
-.timeline-item:hover .timeline-marker {
+.experience-item:hover .experience-marker {
     background: var(--accent);
     box-shadow: var(--glow-strong);
+    transform: scale(1.25);
 }
 
-.timeline-panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 24px 30px;
-    box-shadow: var(--shadow-card);
+.experience-content {
+    padding-left: 15px;
 }
 
-.timeline-panel:hover {
-    border-color: var(--border-color-hover);
-}
-
-.timeline-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 15px;
-}
-
-.timeline-job-title {
-    font-size: 1.15rem;
+.experience-role {
+    font-size: 1.25rem;
     font-weight: 800;
     font-family: var(--font-header);
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
 }
 
-.timeline-company {
-    font-size: 0.85rem;
+.experience-company {
+    font-size: 0.9rem;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--accent-green);
     font-family: var(--font-header);
-    margin-top: 4px;
+    margin-bottom: 12px;
 }
 
-.timeline-date-badge {
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 4px 10px;
-    background: rgba(var(--accent-rgb), 0.08);
-    border: 1px solid var(--border-color);
-    color: var(--accent);
-    border-radius: 4px;
-    font-family: var(--font-header);
-}
-
-.timeline-bullet-list {
+.experience-details-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    padding: 0;
 }
 
-.timeline-bullet-list li {
+.experience-details-list li {
     font-size: 0.88rem;
     color: var(--text-secondary);
     position: relative;
     padding-left: 18px;
+    line-height: 1.6;
 }
 
-.timeline-bullet-list li::before {
+.experience-details-list li::before {
     content: '▪';
     position: absolute;
     left: 0;
@@ -1251,6 +1225,33 @@ body {
 
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .experience-timeline::before {
+        left: 16px;
+    }
+
+    .experience-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding-left: 35px;
+        position: relative;
+    }
+
+    .experience-date {
+        text-align: left;
+        padding-top: 0;
+    }
+
+    .experience-marker {
+        position: absolute;
+        left: 12px;
+        top: 6px;
+        margin: 0;
+    }
+
+    .experience-content {
+        padding-left: 0;
     }
 
     .projects-grid {
