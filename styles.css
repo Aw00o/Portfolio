@@ -12,48 +12,53 @@
     --border-radius: 12px;
     --border-radius-sm: 6px;
     
-    /* Default: Dark Theme Colors (Slate/Navy) */
-    --bg-main: #0b111e;
-    --bg-card: #141d2f;
-    --bg-card-hover: #1b263b;
-    --bg-header: rgba(11, 17, 30, 0.85);
-    --border-color: rgba(59, 130, 246, 0.15);
-    --border-color-hover: rgba(59, 130, 246, 0.45);
-    --accent: #3b82f6;
-    --accent-rgb: 59, 130, 246;
-    --accent-hover: #60a5fa;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    /* Default: Dark Theme Colors (Dark Gray with traces of Red & Army Green) */
+    --bg-main: #141414;
+    --bg-card: #1c1c1c;
+    --bg-card-hover: #242424;
+    --bg-header: rgba(20, 20, 20, 0.85);
+    --border-color: rgba(85, 107, 47, 0.25); /* Traces of Army Green (#556B2F) */
+    --border-color-hover: rgba(239, 68, 68, 0.45); /* Glowing Red on hover */
+    --accent: #ef4444; /* Vibrant Red accent */
+    --accent-rgb: 239, 68, 68;
+    --accent-hover: #f87171;
+    --accent-green: #6b8e23; /* Army Green accent (#6B8E23) */
+    --accent-green-rgb: 107, 142, 35;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
     
     /* Glows & Shadows */
-    --glow: 0 0 15px rgba(59, 130, 246, 0.25);
-    --glow-strong: 0 0 25px rgba(59, 130, 246, 0.5);
-    --shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
-    --scrollbar-thumb: #1e293b;
+    --glow: 0 0 15px rgba(239, 68, 68, 0.25);
+    --glow-strong: 0 0 25px rgba(239, 68, 68, 0.5);
+    --glow-green: 0 0 15px rgba(107, 142, 35, 0.25);
+    --shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.7);
+    --scrollbar-thumb: #2d2d2d;
 }
 
 /* Light Theme Variables */
 [data-theme="light"] {
-    --bg-main: #f1f5f9;
+    --bg-main: #f4f4f5;
     --bg-card: #ffffff;
-    --bg-card-hover: #f8fafc;
-    --bg-header: rgba(241, 245, 249, 0.85);
-    --border-color: #cbd5e1;
-    --border-color-hover: #94a3b8;
-    --accent: #2563eb;
-    --accent-rgb: 37, 99, 235;
-    --accent-hover: #1d4ed8;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #94a3b8;
+    --bg-card-hover: #fafafa;
+    --bg-header: rgba(244, 244, 245, 0.85);
+    --border-color: #e4e4e7;
+    --border-color-hover: #a1a1aa;
+    --accent: #dc2626; /* Darker Red for accessibility */
+    --accent-rgb: 220, 38, 38;
+    --accent-hover: #991b1b;
+    --accent-green: #4f6f32; /* Darker Army Green for light mode */
+    --accent-green-rgb: 79, 111, 50;
+    --text-primary: #18181b;
+    --text-secondary: #52525b;
+    --text-muted: #a1a1aa;
     
-    --glow: 0 0 15px rgba(37, 99, 235, 0.15);
-    --glow-strong: 0 0 25px rgba(37, 99, 235, 0.3);
+    --glow: 0 0 15px rgba(220, 38, 38, 0.15);
+    --glow-strong: 0 0 25px rgba(220, 38, 38, 0.3);
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     --shadow-card: 0 10px 25px rgba(0, 0, 0, 0.08);
-    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-thumb: #d4d4d8;
 }
 
 /* Core Settings */
@@ -121,11 +126,7 @@ body {
     100% { box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.2); }
 }
 
-@keyframes scanner {
-    0% { top: 0%; }
-    50% { top: 100%; }
-    100% { top: 0%; }
-}
+
 
 /* ==========================================================================
    LAYOUT CONTAINERS & HEADER
@@ -429,17 +430,7 @@ body {
     pointer-events: none;
 }
 
-.avatar-scanline {
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
-    box-shadow: 0 0 8px var(--accent);
-    top: 0;
-    left: 0;
-    animation: scanner 5s infinite linear;
-    pointer-events: none;
-}
+
 
 .profile-name {
     font-size: 1.35rem;
@@ -671,34 +662,7 @@ body {
     box-shadow: var(--glow-strong);
 }
 
-/* Dynamic Analyzer Card below grid */
-.skills-analyzer {
-    margin-top: 25px;
-    background: var(--bg-card);
-    border: 1px dashed var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 20px 25px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    box-shadow: var(--shadow-card);
-}
 
-.analyzer-icon-anim {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-    border-top-color: transparent;
-    animation: rotate-double 1.5s infinite linear;
-    flex-shrink: 0;
-}
-
-.analyzer-text-log {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
 
 /* ==========================================================================
    FEATURED PROJECTS
@@ -763,14 +727,17 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-.project-thumbnail {
+.project-thumbnail, .project-video-preview {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    display: block;
+    background-color: #000;
 }
 
-.project-card:hover .project-thumbnail {
+.project-card:hover .project-thumbnail,
+.project-card:hover .project-video-preview {
     transform: scale(1.05);
 }
 
@@ -844,138 +811,7 @@ body {
     font-family: var(--font-mono);
 }
 
-.project-btn-effect {
-    margin-top: auto;
-    width: 100%;
-    padding: 10px 14px;
-    text-align: center;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-sm);
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 700;
-    font-family: var(--font-header);
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
 
-.project-btn-effect:hover {
-    border-color: var(--accent);
-    background: rgba(var(--accent-rgb), 0.05);
-    box-shadow: var(--glow);
-}
-
-/* ==========================================================================
-   COMMUNITY & IMPACT SECTION
-   ========================================================================== */
-
-.community-panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 40px;
-    box-shadow: var(--shadow-card);
-}
-
-.community-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.community-text-col h3 {
-    font-size: 1.4rem;
-    font-weight: 800;
-    font-family: var(--font-header);
-    margin-bottom: 20px;
-}
-
-.community-text-col p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 25px;
-}
-
-.community-perks-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.community-perks-list li {
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text-secondary);
-}
-
-.community-perks-list svg {
-    width: 16px;
-    height: 16px;
-    color: var(--accent);
-    flex-shrink: 0;
-}
-
-.community-social-card {
-    background: rgba(var(--accent-rgb), 0.02);
-    border: 1px dashed var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 30px;
-    text-align: center;
-}
-
-.social-card-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    font-family: var(--font-header);
-    margin-bottom: 15px;
-}
-
-.social-card-desc {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 25px;
-}
-
-.social-icons-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.social-icon-btn {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-.social-icon-btn:hover {
-    color: #ffffff;
-    background-color: var(--accent);
-    border-color: var(--accent);
-    box-shadow: var(--glow-strong);
-    transform: translateY(-3px);
-}
-
-.social-icon-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
-}
 
 /* ==========================================================================
    EXPERIENCE / QUEST LOG

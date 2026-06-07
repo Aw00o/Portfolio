@@ -44,26 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // 2. SKILLS INTERACTIVE ANALYZER LOGGER
-    const skillPills = document.querySelectorAll('.skill-pill');
-    const logBoxText = document.getElementById('analyzer-text-log');
-
-    skillPills.forEach(pill => {
-        const desc = pill.getAttribute('data-desc');
-        const name = pill.querySelector('.skill-pill-name').textContent;
-
-        pill.addEventListener('mouseenter', () => {
-            if (logBoxText && desc) {
-                logBoxText.innerHTML = `<strong>ANALYZING SECTION: ${name.toUpperCase()}</strong><br>${desc}`;
-            }
-        });
-
-        pill.addEventListener('click', () => {
-            if (logBoxText && desc) {
-                logBoxText.innerHTML = `<strong>SECTOR SCAN CONFIRMED [${name.toUpperCase()}]:</strong><br>${desc}`;
-            }
-        });
-    });
 
 
     // 3. FEATURED PROJECTS SORTING / FILTERING
@@ -96,6 +76,38 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 300);
                 }
             });
+        });
+    });
+
+    // 3. PROJECT VIDEO PLAY ON HOVER / FOCUS
+    const projectVideos = document.querySelectorAll('.project-video-preview');
+
+    projectVideos.forEach(video => {
+        // Autoplay on hover
+        video.addEventListener('mouseenter', () => {
+            video.play().catch(err => console.log("Video play interrupted:", err));
+        });
+
+        video.addEventListener('mouseleave', () => {
+            video.pause();
+        });
+
+        // Autoplay on focus (mobile/keyboard navigation)
+        video.addEventListener('focus', () => {
+            video.play().catch(err => console.log("Video play interrupted:", err));
+        });
+
+        video.addEventListener('blur', () => {
+            video.pause();
+        });
+
+        // Toggle play/pause on tap for touch devices
+        video.addEventListener('click', () => {
+            if (video.paused) {
+                video.play().catch(err => console.log("Video play interrupted:", err));
+            } else {
+                video.pause();
+            }
         });
     });
 
