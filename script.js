@@ -60,9 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Apply card filters
             projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
+                const category = card.getAttribute('data-category') || '';
+                const categories = category.split(' ');
 
-                if (filter === 'all' || category === filter) {
+                if (filter === 'all' || categories.includes(filter)) {
                     card.style.display = 'flex';
                     setTimeout(() => {
                         card.style.opacity = '1';
