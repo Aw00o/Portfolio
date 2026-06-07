@@ -790,6 +790,30 @@ body {
     font-family: var(--font-mono);
 }
 
+.project-links-row {
+    margin-top: auto;
+    padding-top: 15px;
+    display: flex;
+    gap: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.project-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-header);
+    transition: all var(--transition-speed) ease;
+    display: inline-block;
+}
+
+.project-link:hover {
+    color: var(--accent-hover);
+    text-shadow: var(--glow);
+    transform: translateX(2px);
+}
+
 
 
 /* ==========================================================================
