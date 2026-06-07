@@ -3,52 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of a professional Gameplay Programmer specializing in Unreal Engine, C++, Blueprints, Unity, CryEngine, Python, and Motion Capture.">
-    <meta name="keywords" content="Gameplay Programmer, Game Developer, Unreal Engine, Unity, CryEngine, C++, Blueprints, Python, Lua, Motion Capture">
-    <meta name="author" content="Gameplay Programmer">
+    <meta name="description" content="Portfolio of Ayomide V. Awoyemi, a professional Gameplay Programmer specializing in Unreal Engine, C++, physics-based character controllers, combat loops, and Motion Capture.">
+    <meta name="keywords" content="Gameplay Programmer, Game Developer, Unreal Engine, Unity, C++, Blueprints, Python, Lua, Motion Capture, MoCap, Game Dev Portfolio">
+    <meta name="author" content="Ayomide V. Awoyemi">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Gameplay Programmer | Portfolio">
-    <meta property="og:description" content="Showcasing core combat mechanics, traversal systems, and high-performance gameplay systems built in Unreal Engine, C++, and Blueprints.">
+    <meta property="og:title" content="Ayomide V. Awoyemi | Gameplay Programmer Portfolio">
+    <meta property="og:description" content="Showcasing core combat mechanics, traversal systems, and motion capture integrations built in Unreal Engine and C++.">
     
-    <title>Gameplay Programmer | Portfolio & Quest Log</title>
+    <title>Ayomide V. Awoyemi | Gameplay Programmer Portfolio</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="theme-amber">
-    <!-- Boot Screen Simulation Overlay -->
-    <div id="boot-screen" class="boot-screen">
-        <div class="boot-content">
-            <div class="boot-terminal-line">> INITIATING SYSTEM BOOT SEQUENCE...</div>
-            <div class="boot-terminal-line">> MOUNTING CORE MODULES... [OK]</div>
-            <div class="boot-terminal-line">> LOADING UNREAL ENGINE PIPELINES... [OK]</div>
-            <div class="boot-terminal-line">> PARSING GAMEPLAY SYSTEMS (C++/BLUEPRINTS)... [OK]</div>
-            <div class="boot-terminal-line">> INITIALIZING INTERACTIVE HUD... [OK]</div>
-            <div class="boot-terminal-line progress-line">> RENDERING PORTFOLIO ENVIRONMENT... <span id="boot-pct">0</span>%</div>
-            <div class="progress-bar-container">
-                <div id="boot-progress-bar" class="progress-bar-fill"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Background Scanline & Grid Overlays for Sci-Fi aesthetic -->
-    <div class="scanlines"></div>
-    <div class="grid-overlay"></div>
-    <div class="particles" id="particles-container"></div>
-
+<body>
     <!-- HUD Header -->
-    <header class="hud-header" id="hud-navbar">
-        <div class="hud-container header-wrapper">
-            <a href="#hero" class="hud-logo font-orbitron" id="nav-logo">
-                <span class="pulse-icon"></span>
-                CORE_GDEV.SYS // <span class="accent-text">ACTIVE</span>
+    <header class="header" id="hud-navbar">
+        <div class="container header-wrapper">
+            <a href="#hero" class="logo" id="nav-logo">
+                <span class="logo-dot"></span>
+                AYOMIDE.DEV
             </a>
             
             <!-- Mobile Menu Toggle -->
@@ -58,169 +38,136 @@
                 <span class="bar"></span>
             </button>
             
-            <nav class="hud-nav" id="hud-nav-menu">
-                <ul class="nav-list font-space">
-                    <li><a href="#about" class="nav-link" id="nav-link-about">INSPECT STATS</a></li>
-                    <li><a href="#skills" class="nav-link" id="nav-link-skills">SKILLS MATRIX</a></li>
-                    <li><a href="#projects" class="nav-link" id="nav-link-projects">INVENTORY (WORKS)</a></li>
-                    <li><a href="#experience" class="nav-link" id="nav-link-experience">QUEST LOG</a></li>
-                    <li><a href="#contact" class="nav-link" id="nav-link-contact">POST QUEST</a></li>
+            <nav class="nav" id="hud-nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#hero" class="nav-link active" id="nav-link-hero">HOME</a></li>
+                    <li><a href="#about" class="nav-link" id="nav-link-about">ABOUT</a></li>
+                    <li><a href="#skills" class="nav-link" id="nav-link-skills">SKILLS</a></li>
+                    <li><a href="#projects" class="nav-link" id="nav-link-projects">PROJECTS</a></li>
+                    <li><a href="#experience" class="nav-link" id="nav-link-experience">EXPERIENCE</a></li>
+                    <li><a href="#contact" class="nav-link" id="nav-link-contact">CONTACT</a></li>
                 </ul>
-            </nav>
-            
-            <!-- HUD Control Center (Sound, HUD themes) -->
-            <div class="hud-controls">
-                <button id="sound-btn" class="hud-control-btn icon-btn" title="Toggle Interface Sound">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm0-4h-2V7h2v7z"/>
+                
+                <!-- Dark/Light Theme Toggle -->
+                <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Light/Dark Theme">
+                    <!-- Sun Icon (shown in light mode) -->
+                    <svg class="sun-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
                     </svg>
-                    <span id="sound-status-lbl" class="btn-tooltip">SOUND: ON</span>
+                    <!-- Moon Icon (shown in dark mode) -->
+                    <svg class="moon-icon" viewBox="0 0 24 24">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
                 </button>
-                <div class="hud-theme-picker">
-                    <button class="theme-dot dot-amber active" data-theme="amber" title="Unreal Amber HUD"></button>
-                    <button class="theme-dot dot-cyan" data-theme="cyan" title="Sci-Fi Cyan HUD"></button>
-                    <button class="theme-dot dot-violet" data-theme="violet" title="Cyber Violet HUD"></button>
-                </div>
-            </div>
+            </nav>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="hud-container">
+    <main>
         
-        <!-- SECTION 1: HERO / SYSTEM INTERACTION -->
-        <section id="hero" class="hero-section">
-            <div class="hero-grid">
-                <!-- Left: Big Title / Introduction -->
-                <div class="hero-intro">
-                    <div class="hud-badge font-orbitron font-glow">SYSTEM ARCHITECT // GAMEPLAY</div>
-                    <h1 class="hero-title font-orbitron">
-                        BREATHING LIFE INTO <br>
-                        <span class="text-gradient font-glow">VIRTUAL WORLDS</span>
-                    </h1>
-                    <p class="hero-subtitle font-space">
-                        Specializing in C++, Blueprints, and high-performance physics-based character gameplay, AI systems, and combat loop designs. Crafted mainly inside Unreal Engine, with deep cross-engine expertise.
-                    </p>
-                    <div class="hero-ctas">
-                        <a href="#projects" class="hud-btn btn-primary font-orbitron" id="btn-view-works">
-                            <span class="btn-glitch"></span>VIEW INVENTORY
-                        </a>
-                        <a href="#contact" class="hud-btn btn-secondary font-orbitron" id="btn-post-quest">
-                            SUBMIT CO-OP QUEST
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Right: Interactive HUD Console -->
-                <div class="hero-console hud-panel">
-                    <div class="panel-header font-orbitron">
-                        <span class="header-icon"></span>HUD_TERMINAL_DIAGNOSTICS.EXE
-                        <div class="window-dots">
-                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                        </div>
-                    </div>
-                    <div class="panel-body console-body font-space">
-                        <div id="console-output" class="console-output">
-                            <!-- Boot and greeting text will go here dynamically -->
-                        </div>
-                        <div class="console-input-line">
-                            <span class="console-prompt">guest@gamedev:~$</span>
-                            <input type="text" id="console-input" class="console-input" autocomplete="off" placeholder="Type 'help' for available actions..." aria-label="Console Terminal Input">
-                        </div>
-                        <div class="console-shortcuts">
-                            <span class="shortcut-lbl">QUICK SCAN:</span>
-                            <button class="shortcut-btn" data-cmd="about">about</button>
-                            <button class="shortcut-btn" data-cmd="skills">skills</button>
-                            <button class="shortcut-btn" data-cmd="inventory">inventory</button>
-                            <button class="shortcut-btn" data-cmd="contact">contact</button>
-                            <button class="shortcut-btn" data-cmd="clear">clear</button>
-                        </div>
-                    </div>
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-badge">GAMEPLAY SYSTEMS ARCHITECT</div>
+                <h1 class="hero-title">
+                    GAMEPLAY PROGRAMMER
+                </h1>
+                <p class="hero-subtitle">
+                    Developing high-performance character controllers, core combat mechanics, and automated motion capture pipelines. Bridging technical implementation and design execution in Unreal Engine and C++.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#projects" class="btn btn-primary" id="btn-view-works">VIEW PORTFOLIO</a>
+                    <a href="#contact" class="btn btn-secondary" id="btn-post-quest">GET IN TOUCH</a>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 2: ABOUT / CHARACTER SHEET -->
-        <section id="about" class="about-section scroll-offset">
-            <div class="section-heading-wrapper">
-                <h2 class="section-title font-orbitron" id="heading-about">
-                    <span class="title-index">// 01</span> CHARACTER SHEET
-                </h2>
-                <div class="title-line"></div>
-            </div>
-            
-            <div class="char-sheet-grid">
-                <!-- Left: Profile Widget -->
-                <div class="hud-panel profile-panel">
-                    <div class="panel-header font-orbitron">
-                        <span>OPERATOR PROFILE</span>
-                    </div>
-                    <div class="panel-body profile-body">
-                        <!-- Holographic Character Avatar Box -->
-                        <div class="avatar-box">
-                            <div class="avatar-scanner"></div>
-                            <div class="avatar-wireframe">
-                                <!-- Clean Custom CSS Animated Graphic -->
-                                <div class="cube-container">
-                                    <div class="cube">
-                                        <div class="face front"></div>
-                                        <div class="face back"></div>
-                                        <div class="face right"></div>
-                                        <div class="face left"></div>
-                                        <div class="face top"></div>
-                                        <div class="face bottom"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="avatar-meta font-orbitron">
-                                <span class="meta-item">STATUS: <span class="accent-text pulse-fast">ONLINE</span></span>
-                                <span class="meta-item">ROLE: GAMEPLAY DEV</span>
-                            </div>
-                        </div>
-
-                        <!-- Stats table -->
-                        <div class="stats-table font-space">
-                            <div class="stats-row"><span class="stats-lbl">FACTION</span><span class="stats-val text-gradient font-glow">UNREAL ENGINE</span></div>
-                            <div class="stats-row"><span class="stats-lbl">SPECIALTY</span><span class="stats-val">COMBAT & TRAVERSAL</span></div>
-                            <div class="stats-row"><span class="stats-lbl">C++ LVL</span><span class="stats-val">95/100</span></div>
-                            <div class="stats-row"><span class="stats-lbl">BLUEPRINTS LVL</span><span class="stats-val">95/100</span></div>
-                            <div class="stats-row"><span class="stats-lbl">CLASS</span><span class="stats-val">SYSTEMS PROGRAMMER</span></div>
-                        </div>
-                    </div>
+        <!-- ABOUT SECTION -->
+        <section id="about" class="scroll-offset">
+            <div class="container">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">ABOUT ME</h2>
+                    <div class="section-title-line"></div>
                 </div>
-
-                <!-- Right: Detailed bio and traits -->
-                <div class="hud-panel bio-panel">
-                    <div class="panel-header font-orbitron">
-                        <span>CORE SPECS & TRAITS</span>
+                
+                <div class="about-grid">
+                    <!-- Left: Profile Card -->
+                    <div class="profile-card">
+                        <div class="avatar-wrapper">
+                            <div class="avatar-scanline"></div>
+                            <img src="images/profile.png" alt="Ayomide V. Awoyemi Profile" class="avatar-image" id="avatar-img">
+                            <div class="avatar-overlay"></div>
+                        </div>
+                        <h3 class="profile-name">Ayomide V. Awoyemi</h3>
+                        <p class="profile-role">GAMEPLAY PROGRAMMER</p>
+                        
+                        <ul class="profile-meta-list">
+                            <li class="profile-meta-item">
+                                <span class="profile-meta-label">Status</span>
+                                <span class="profile-meta-value accent-text">Available</span>
+                            </li>
+                            <li class="profile-meta-item">
+                                <span class="profile-meta-label">Location</span>
+                                <span class="profile-meta-value">Remote / Global</span>
+                            </li>
+                            <li class="profile-meta-item">
+                                <span class="profile-meta-label">Specialty</span>
+                                <span class="profile-meta-value">C++ / UE5 / MoCap</span>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="panel-body bio-body font-space">
-                        <p class="bio-paragraph">
-                            I am a <strong class="accent-text">Gameplay Programmer</strong> driven by creating responsive, satisfying, and polished player interactions. My sweet spot lies at the intersection of game design and software architecture—building clean, modular gameplay frameworks in C++ and exposing robust API endpoints for designers via Blueprints.
+
+                    <!-- Right: Bio and Perks -->
+                    <div class="about-bio-panel">
+                        <div class="bio-title">
+                            <span class="bio-title-line"></span>
+                            CORE TRAITS & SKILLS
+                        </div>
+                        <p class="bio-text">
+                            I am a <strong>Gameplay Programmer</strong> focused on producing responsive, tactile, and highly optimized character interactions. My background sits at the intersection of game systems engineering and animation pipelines—enabling me to construct scalable movement mechanics in C++, design animation control-rig structures, and streamline asset workflows for designers.
                         </p>
                         
-                        <p class="bio-paragraph">
-                            From implementing complex frame-perfect hitboxes in fighter games to tuning fluid traversal physics for action-adventure titles, I design systems built to last. Furthermore, my hands-on background in <strong class="accent-text">motion capture cleanup and pipeline script automation</strong> gives me a deep respect for full-body animation sync, blending, and physical simulation.
+                        <p class="bio-text">
+                            With specialized expertise in <strong>motion capture cleanup and animation pipelines</strong>, I bridge the gap between human actor performances and virtual skeleton states. Additionally, my experience in player relations allows me to host community tests, translate playtester analytics, and iterate quickly on gameplay feedback.
                         </p>
-                        
-                        <div class="traits-container">
-                            <h3 class="traits-title font-orbitron">TRAITS / PERKS</h3>
+
+                        <!-- About Buttons linking to LinkedIn and GitHub -->
+                        <div class="about-social-buttons">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-primary btn-social" id="btn-linkedin">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-secondary btn-social" id="btn-github">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+
+                        <!-- Traits Perks -->
+                        <div class="traits-panel">
+                            <h3 class="traits-title">SPECIALTIES & ROLES</h3>
                             <div class="traits-grid">
                                 <div class="trait-card">
-                                    <div class="trait-icon font-orbitron">COMBAT</div>
-                                    <div class="trait-desc">Combos, hitboxes, character state machines, weapon systems.</div>
+                                    <div class="trait-name">CHARACTER PHYSICS</div>
+                                    <div class="trait-desc">Custom movement controllers, grapple rigs, climbing states, dynamic ledge alignments.</div>
                                 </div>
                                 <div class="trait-card">
-                                    <div class="trait-icon font-orbitron">PHYSICS</div>
-                                    <div class="trait-desc">Fluid traversal, custom movement components, gravity vectors.</div>
+                                    <div class="trait-name">COMBAT SYSTEMS</div>
+                                    <div class="trait-desc">Responsive attack queues, frame-accurate hitbox detection, status effect structures.</div>
                                 </div>
                                 <div class="trait-card">
-                                    <div class="trait-icon font-orbitron">MOCAP</div>
-                                    <div class="trait-desc">Optical cleanup, motion retargeting pipelines, scripting.</div>
+                                    <div class="trait-name">MOCAP INTEGRATION</div>
+                                    <div class="trait-desc">Optical capture calibration, pipeline script automation, asset translation into UE skeleton nodes.</div>
                                 </div>
                                 <div class="trait-card">
-                                    <div class="trait-icon font-orbitron">COMMUNITY</div>
-                                    <div class="trait-desc">Bridging dev intentions and player expectations, hosting tests.</div>
+                                    <div class="trait-name">COMMUNITY MANAGEMENT</div>
+                                    <div class="trait-desc">Organizing developer-player test rounds, tracking bug logs, compiling updates boards.</div>
                                 </div>
                             </div>
                         </div>
@@ -229,466 +176,458 @@
             </div>
         </section>
 
-        <!-- SECTION 3: SKILLS MATRIX -->
-        <section id="skills" class="skills-section scroll-offset">
-            <div class="section-heading-wrapper">
-                <h2 class="section-title font-orbitron" id="heading-skills">
-                    <span class="title-index">// 02</span> SKILLS MATRIX
-                </h2>
-                <div class="title-line"></div>
-            </div>
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="scroll-offset">
+            <div class="container">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">SKILLS & EXPERTISE</h2>
+                    <div class="section-title-line"></div>
+                </div>
 
-            <div class="skills-grid">
-                <!-- Languages Panel -->
-                <div class="hud-panel skill-category-panel">
-                    <div class="panel-header font-orbitron">
-                        <span>PROGRAMMING LANGUAGES</span>
+                <div class="skills-grid">
+                    <!-- Column 1: Core Engines -->
+                    <div class="skill-card">
+                        <div class="skill-icon-wrapper">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="9" y1="3" x2="9" y2="21"></line>
+                                <line x1="15" y1="3" x2="15" y2="21"></line>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="3" y1="15" x2="21" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3 class="skill-card-title">CORE ENGINES</h3>
+                        <div class="skill-items-list">
+                            <div class="skill-pill" data-desc="Unreal Engine: Master of core architecture, Blueprints/C++ API hooks, GAS, and animation systems.">
+                                <span class="skill-pill-name">Unreal Engine (C++/Blueprint)</span>
+                                <span class="skill-level-indicator"></span>
+                            </div>
+                            <div class="skill-pill" data-desc="Unity: Proficient. Prototyping game systems, implementing physics components, and writing clean C# scripts.">
+                                <span class="skill-pill-name">Unity</span>
+                                <span class="skill-level-indicator"></span>
+                            </div>
+                            <div class="skill-pill" data-desc="CryEngine: Solid navigation of editor parameters, Flowgraph logic networks, and Lua scripting.">
+                                <span class="skill-pill-name">CryEngine</span>
+                                <span class="skill-level-indicator"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel-body skills-list font-space">
-                        <div class="skill-item" data-detail="Languages: C++ is my primary tool for core engine architectures, game physics, and performance-critical systems.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">C++</span>
-                                <span class="skill-lvl">95%</span>
-                            </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 95%"></div></div>
+
+                    <!-- Column 2: Programming Languages -->
+                    <div class="skill-card">
+                        <div class="skill-icon-wrapper">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
                         </div>
-                        <div class="skill-item" data-detail="Languages: Visual scripting in Unreal Engine for fast prototyping and exposing robust variables to design team.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">UE BLUEPRINT</span>
-                                <span class="skill-lvl">95%</span>
+                        <h3 class="skill-card-title">LANGUAGES</h3>
+                        <div class="skill-items-list">
+                            <div class="skill-pill" data-desc="C++: Primary language. Writing optimized game physics modules, handling memory registers, and engine framework layers.">
+                                <span class="skill-pill-name">C++</span>
+                                <span class="skill-level-indicator"></span>
                             </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 95%"></div></div>
+                            <div class="skill-pill" data-desc="Python: Pipeline scripting, batching capture cleaning commands, and custom exporter utilities.">
+                                <span class="skill-pill-name">Python</span>
+                                <span class="skill-level-indicator"></span>
+                            </div>
+                            <div class="skill-pill" data-desc="Lua: Scripting logic trees, game controller scripts, and AI reaction scripts.">
+                                <span class="skill-pill-name">Lua</span>
+                                <span class="skill-level-indicator"></span>
+                            </div>
                         </div>
-                        <div class="skill-item" data-detail="Languages: Used for tooling, automation, writing pipeline scripts for Mocap tools (Vicon/Blade/MotionBuilder), and asset exporters.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">PYTHON</span>
-                                <span class="skill-lvl">80%</span>
-                            </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 80%"></div></div>
+                    </div>
+
+                    <!-- Column 3: Specialties -->
+                    <div class="skill-card">
+                        <div class="skill-icon-wrapper">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                            </svg>
                         </div>
-                        <div class="skill-item" data-detail="Languages: Used extensively for scripting gameplay logic and AI loops in CryEngine projects.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">LUA</span>
-                                <span class="skill-lvl">75%</span>
+                        <h3 class="skill-card-title">SPECIALTIES</h3>
+                        <div class="skill-items-list">
+                            <div class="skill-pill" data-desc="Mechanics: Setting up traversal states, climbing nodes, shooting scripts, and weapon parameters.">
+                                <span class="skill-pill-name">Mechanics</span>
+                                <span class="skill-level-indicator"></span>
                             </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 75%"></div></div>
+                            <div class="skill-pill" data-desc="AI & Combat: State machines, blackboard paths, combat queues, and hitbox calculations.">
+                                <span class="skill-pill-name">AI & Combat Systems</span>
+                                <span class="skill-level-indicator"></span>
+                            </div>
+                            <div class="skill-pill" data-desc="Animation & MoCap: Custom Control-Rigs, animation warp loops, marker calibration, and batch skeleton mapping.">
+                                <span class="skill-pill-name">Animation Programming & MoCap</span>
+                                <span class="skill-level-indicator"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Engines Panel -->
-                <div class="hud-panel skill-category-panel">
-                    <div class="panel-header font-orbitron">
-                        <span>GAME ENGINES</span>
-                    </div>
-                    <div class="panel-body skills-list font-space">
-                        <div class="skill-item" data-detail="Engines: Primary tool. Master of UE4/UE5 core architecture, gameplay replication, gameplay ability system (GAS), and animation blueprint systems.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">UNREAL ENGINE</span>
-                                <span class="skill-lvl">98%</span>
-                            </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 98%"></div></div>
-                        </div>
-                        <div class="skill-item" data-detail="Engines: Proficient. Building prototypes, physics simulations, component setups, and scripting using C#.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">UNITY</span>
-                                <span class="skill-lvl">80%</span>
-                            </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 80%"></div></div>
-                        </div>
-                        <div class="skill-item" data-detail="Engines: Solid experience. Logic scripting using Lua, navigating Flowgraph architectures, and adjusting entity structures.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">CRYENGINE</span>
-                                <span class="skill-lvl">70%</span>
-                            </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 70%"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Specializations Panel -->
-                <div class="hud-panel skill-category-panel">
-                    <div class="panel-header font-orbitron">
-                        <span>SPECIALIZED MECHANICS</span>
-                    </div>
-                    <div class="panel-body skills-list font-space">
-                        <div class="skill-item" data-detail="Specializations: Setting up cameras, calibrated markers, capturing real-time actor motions, and cleaning optical data gaps.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">MOTION CAPTURE & CLEANUP</span>
-                                <span class="skill-lvl">90%</span>
-                            </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill-item" data-detail="Specializations: Design and architecture of player movement components, climbing, vaulting, and custom gravity rigs.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">TRAVERSAL & CHARACTER CONTROLLERS</span>
-                                <span class="skill-lvl">92%</span>
-                            </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 92%"></div></div>
-                        </div>
-                        <div class="skill-item" data-detail="Specializations: Moderating playtests, handling bug report boards, and conveying complex dev metrics clearly to community channels.">
-                            <div class="skill-meta">
-                                <span class="skill-name font-orbitron">COMMUNITY MANAGEMENT & PLAYTESTS</span>
-                                <span class="skill-lvl">85%</span>
-                            </div>
-                            <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Interactively updated skill analyzer dashboard -->
-            <div id="skills-detail-analyzer" class="hud-panel analyzer-panel font-space">
-                <div class="panel-header font-orbitron">
-                    <span>ANALYZE_SKILL_MODULE.LOG</span>
-                </div>
-                <div class="panel-body">
-                    <div class="analyzer-icon"></div>
-                    <div class="analyzer-text" id="analyzer-text-output">
-                        Select or hover over any skill in the matrix to run a deep memory sector analysis...
+                <!-- Interactive Skill Details Display Box -->
+                <div class="skills-analyzer" id="skills-analyzer">
+                    <div class="analyzer-icon-anim"></div>
+                    <div class="analyzer-text-log" id="analyzer-text-log">
+                        Hover or click any skill card parameter above to extract functional logs...
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 4: PROJECTS (INVENTORY) -->
-        <section id="projects" class="projects-section scroll-offset">
-            <div class="section-heading-wrapper">
-                <h2 class="section-title font-orbitron" id="heading-projects">
-                    <span class="title-index">// 03</span> PROJECT INVENTORY
-                </h2>
-                <div class="title-line"></div>
-            </div>
-
-            <!-- Inventory Filters -->
-            <div class="inventory-filters font-orbitron" id="project-filters">
-                <button class="filter-tab active" data-filter="all">ALL_ITEMS</button>
-                <button class="filter-tab" data-filter="rpg">RPG_PROJECTS</button>
-                <button class="filter-tab" data-filter="fps">FPS_PROJECTS</button>
-                <button class="filter-tab" data-filter="fighter">FIGHTERS</button>
-                <button class="filter-tab" data-filter="adventure">ACTION_ADV</button>
-                <button class="filter-tab" data-filter="mocap">MOCAP_UTILITIES</button>
-            </div>
-
-            <!-- Inventory Cards Grid -->
-            <div class="projects-grid" id="projects-grid-container">
-                
-                <!-- Project 1: Chrono Blade (RPG) -->
-                <div class="project-card hud-panel" data-genres="rpg">
-                    <div class="panel-header font-orbitron">
-                        <span>[SLOT 1] CHRONO_BLADE</span>
-                        <span class="card-status active">STABLE</span>
-                    </div>
-                    <div class="panel-body project-body font-space">
-                        <div class="project-preview-wrap">
-                            <div class="project-glitch-overlay"></div>
-                            <!-- Styled vector card graphic instead of broken images -->
-                            <div class="project-placeholder-graphic rpg-theme">
-                                <span class="graphic-icon font-orbitron">{ COM COMBAT }</span>
-                            </div>
-                        </div>
-                        <h3 class="project-title font-orbitron">Chrono Blade (Action-RPG)</h3>
-                        <p class="project-description">
-                            A fast-paced Action-RPG showcasing dynamic weapon switching, combo-buff queue systems, and optimized animation warping modules.
-                        </p>
-                        <ul class="project-spec-list">
-                            <li><strong>Engine:</strong> Unreal Engine 5</li>
-                            <li><strong>Language:</strong> C++ / Blueprints</li>
-                            <li><strong>My Role:</strong> Lead Gameplay Architect</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="p-tag">GAS</span>
-                            <span class="p-tag">StateMachines</span>
-                            <span class="p-tag">PhysicsCombat</span>
-                        </div>
-                    </div>
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="scroll-offset">
+            <div class="container">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">FEATURED PROJECTS</h2>
+                    <div class="section-title-line"></div>
                 </div>
 
-                <!-- Project 2: Shadow Protocol (FPS) -->
-                <div class="project-card hud-panel" data-genres="fps">
-                    <div class="panel-header font-orbitron">
-                        <span>[SLOT 2] SHADOW_PROTOCOL</span>
-                        <span class="card-status active">STABLE</span>
-                    </div>
-                    <div class="panel-body project-body font-space">
-                        <div class="project-preview-wrap">
-                            <div class="project-glitch-overlay"></div>
-                            <div class="project-placeholder-graphic fps-theme">
-                                <span class="graphic-icon font-orbitron">[ SHOOTER ]</span>
-                            </div>
-                        </div>
-                        <h3 class="project-title font-orbitron">Shadow Protocol (Tactical FPS)</h3>
-                        <p class="project-description">
-                            Features procedural weapon recoil profiles, replication-efficient projectile prediction paths, and fully customizable attachment layouts.
-                        </p>
-                        <ul class="project-spec-list">
-                            <li><strong>Engine:</strong> Unreal Engine 5</li>
-                            <li><strong>Language:</strong> C++</li>
-                            <li><strong>My Role:</strong> Weapons Systems Dev</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="p-tag">Multiplayer</span>
-                            <span class="p-tag">Physics</span>
-                            <span class="p-tag">Netcode</span>
-                        </div>
-                    </div>
+                <!-- Categories Filter Tabs -->
+                <div class="projects-filters" id="projects-filters">
+                    <button class="tab-filter active" data-filter="all">All Projects</button>
+                    <button class="tab-filter" data-filter="fps">FPS</button>
+                    <button class="tab-filter" data-filter="fighter">Fighter</button>
+                    <button class="tab-filter" data-filter="rpg">Action RPG</button>
+                    <button class="tab-filter" data-filter="mocap">Motion Capture</button>
+                    <button class="tab-filter" data-filter="others">Others</button>
                 </div>
 
-                <!-- Project 3: Nexus Clash (Fighter) -->
-                <div class="project-card hud-panel" data-genres="fighter">
-                    <div class="panel-header font-orbitron">
-                        <span>[SLOT 3] NEXUS_CLASH</span>
-                        <span class="card-status active">STABLE</span>
-                    </div>
-                    <div class="panel-body project-body font-space">
-                        <div class="project-preview-wrap">
-                            <div class="project-glitch-overlay"></div>
-                            <div class="project-placeholder-graphic fighter-theme">
-                                <span class="graphic-icon font-orbitron">&lt; FIGHT &gt;</span>
-                            </div>
-                        </div>
-                        <h3 class="project-title font-orbitron">Nexus Clash (2.5D Fighter)</h3>
-                        <p class="project-description">
-                            Engineered an input buffer parser capable of handling 2D inputs, rollback synchronization hooks, and customizable frame data sheets.
-                        </p>
-                        <ul class="project-spec-list">
-                            <li><strong>Engine:</strong> Unity</li>
-                            <li><strong>Language:</strong> C#</li>
-                            <li><strong>My Role:</strong> Engine Physics & Systems</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="p-tag">InputBuffer</span>
-                            <span class="p-tag">FrameData</span>
-                            <span class="p-tag">Rollback</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4: Echoes of Eldoria (Action-Adventure) -->
-                <div class="project-card hud-panel" data-genres="adventure rpg">
-                    <div class="panel-header font-orbitron">
-                        <span>[SLOT 4] ECHOES_ELDORIA</span>
-                        <span class="card-status active">STABLE</span>
-                    </div>
-                    <div class="panel-body project-body font-space">
-                        <div class="project-preview-wrap">
-                            <div class="project-glitch-overlay"></div>
-                            <div class="project-placeholder-graphic adventure-theme">
-                                <span class="graphic-icon font-orbitron">~ TRAVERSAL ~</span>
-                            </div>
-                        </div>
-                        <h3 class="project-title font-orbitron">Echoes of Eldoria (Adventure)</h3>
-                        <p class="project-description">
-                            Implmented custom climbing nodes, grappling physics, dynamic ledge-grabbing controllers, and AI patrols using Lua nodes.
-                        </p>
-                        <ul class="project-spec-list">
-                            <li><strong>Engine:</strong> CryEngine</li>
-                            <li><strong>Language:</strong> Lua / C++</li>
-                            <li><strong>My Role:</strong> Character Controller Dev</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="p-tag">LuaScript</span>
-                            <span class="p-tag">AI_Nodes</span>
-                            <span class="p-tag">Traversal</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5: Mocap Pipeline Vault (Mocap) -->
-                <div class="project-card hud-panel" data-genres="mocap">
-                    <div class="panel-header font-orbitron">
-                        <span>[SLOT 5] MOCAP_PIPELINE</span>
-                        <span class="card-status active">TOOL</span>
-                    </div>
-                    <div class="panel-body project-body font-space">
-                        <div class="project-preview-wrap">
-                            <div class="project-glitch-overlay"></div>
-                            <div class="project-placeholder-graphic mocap-theme">
-                                <span class="graphic-icon font-orbitron">% MOCAP %</span>
-                            </div>
-                        </div>
-                        <h3 class="project-title font-orbitron">Mocap Retargeting Suite</h3>
-                        <p class="project-description">
-                            Python tools for batch cleaning raw optical motion capture sequences, automatic marker fixing, and retargeting straight to UE Metahumans.
-                        </p>
-                        <ul class="project-spec-list">
-                            <li><strong>Tools:</strong> Vicon Blade / MotionBuilder</li>
-                            <li><strong>Language:</strong> Python</li>
-                            <li><strong>My Role:</strong> Technical Pipeline Animator</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="p-tag">PythonSDK</span>
-                            <span class="p-tag">Retargeting</span>
-                            <span class="p-tag">BatchClean</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SECTION 5: QUEST LOG (EXPERIENCE) -->
-        <section id="experience" class="experience-section scroll-offset">
-            <div class="section-heading-wrapper">
-                <h2 class="section-title font-orbitron" id="heading-experience">
-                    <span class="title-index">// 04</span> QUEST LOG (EXPERIENCE)
-                </h2>
-                <div class="title-line"></div>
-            </div>
-
-            <!-- RPG Quest Style Experience Log -->
-            <div class="quest-log-container font-space">
-                
-                <!-- Quest Category: Active/Current -->
-                <div class="quest-category">
-                    <h3 class="quest-category-title font-orbitron">ACTIVE QUESTS (CURRENT)</h3>
+                <!-- Projects Cards Grid -->
+                <div class="projects-grid" id="projects-grid">
                     
-                    <div class="quest-item active-quest hud-panel">
-                        <div class="panel-header font-orbitron">
-                            <span>QUEST: BUILD MAIN CAMPAIGN SYSTEMS</span>
-                            <span class="quest-reward-badge font-glow">IN PROGRESS</span>
+                    <!-- Project 1: Aether's Fall (Action RPG) -->
+                    <div class="project-card" data-category="rpg">
+                        <div class="project-thumbnail-wrapper">
+                            <span class="project-badge-tag">RPG</span>
+                            <img src="images/project1.png" alt="Aether's Fall RPG Gameplay" class="project-thumbnail" id="project1-img">
                         </div>
-                        <div class="panel-body quest-body">
-                            <h4 class="quest-title">Senior Gameplay Programmer @ Quantum Forge Studios</h4>
-                            <p class="quest-duration font-orbitron">2024 - PRESENT</p>
-                            
-                            <ul class="quest-objectives">
-                                <li><span class="checkbox checked"></span> Develop and maintain scalable C++ player controllers and character movement systems inside UE5.</li>
-                                <li><span class="checkbox checked"></span> Interface with animation directors to create modular control-rig hooks and warp loops.</li>
-                                <li><span class="checkbox checked"></span> Manage community playtests, compile community bug boards, and optimize replication latency.</li>
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">Aether's Fall</h3>
+                            <p class="project-card-desc">
+                                A fantasy Action-RPG showing fluid C++ character physics, dynamic combat hitboxes, and automated Control-Rig warp nodes.
+                            </p>
+                            <ul class="project-meta-tech">
+                                <li><strong>Engine:</strong> Unreal Engine 5</li>
+                                <li><strong>Language:</strong> C++ / Blueprints</li>
                             </ul>
-                            
-                            <div class="quest-rewards">
-                                <strong>ACQUIRED LOOT:</strong> UE5 GAS, Rollback Physics, Profiling, Python pipeline utilities.
+                            <div class="project-tags-row">
+                                <span class="project-pill-tag">Combat</span>
+                                <span class="project-pill-tag">GAS</span>
+                                <span class="project-pill-tag">Warping</span>
                             </div>
+                            <button class="project-btn-effect">Hover Effect</button>
                         </div>
                     </div>
+
+                    <!-- Project 2: Operation: Void (FPS) -->
+                    <div class="project-card" data-category="fps">
+                        <div class="project-thumbnail-wrapper">
+                            <span class="project-badge-tag">FPS</span>
+                            <img src="images/project2.png" alt="Operation: Void FPS Gameplay" class="project-thumbnail" id="project2-img">
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">Operation: Void</h3>
+                            <p class="project-card-desc">
+                                A high-octane FPS featuring procedural weapon recoil scripts, networked projectile path prediction, and Lua logic triggers.
+                            </p>
+                            <ul class="project-meta-tech">
+                                <li><strong>Engine:</strong> Unreal Engine 5</li>
+                                <li><strong>Language:</strong> C++ / Lua</li>
+                            </ul>
+                            <div class="project-tags-row">
+                                <span class="project-pill-tag">FPS</span>
+                                <span class="project-pill-tag">Networked</span>
+                                <span class="project-pill-tag">Weapons</span>
+                            </div>
+                            <button class="project-btn-effect">Hover Effect</button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Nexus Clash (Fighter) -->
+                    <div class="project-card" data-category="fighter">
+                        <div class="project-thumbnail-wrapper">
+                            <span class="project-badge-tag">FIGHTER</span>
+                            <img src="images/project3.png" alt="Nexus Clash Gameplay" class="project-thumbnail" id="project3-img">
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">Nexus Clash</h3>
+                            <p class="project-card-desc">
+                                A 2.5D Fighter with customizable combo buffer parsers, rollback state synchronization hooks, and data-driven frame triggers.
+                            </p>
+                            <ul class="project-meta-tech">
+                                <li><strong>Engine:</strong> Unity</li>
+                                <li><strong>Language:</strong> C#</li>
+                            </ul>
+                            <div class="project-tags-row">
+                                <span class="project-pill-tag">Fighter</span>
+                                <span class="project-pill-tag">Rollback</span>
+                                <span class="project-pill-tag">Physics</span>
+                            </div>
+                            <button class="project-btn-effect">Hover Effect</button>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: The Lost Kingdom (Others / Action-Adventure) -->
+                    <div class="project-card" data-category="others">
+                        <div class="project-thumbnail-wrapper">
+                            <span class="project-badge-tag">ADVENTURE</span>
+                            <img src="images/project4.png" alt="The Lost Kingdom Landscape" class="project-thumbnail" id="project4-img">
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">The Lost Kingdom</h3>
+                            <p class="project-card-desc">
+                                An open-world action-adventure displaying procedural ledge-grabbing calculations, custom climbing states, and AI blackboard maps.
+                            </p>
+                            <ul class="project-meta-tech">
+                                <li><strong>Engine:</strong> CryEngine</li>
+                                <li><strong>Language:</strong> C++ / Lua</li>
+                            </ul>
+                            <div class="project-tags-row">
+                                <span class="project-pill-tag">Climbing</span>
+                                <span class="project-pill-tag">AI</span>
+                                <span class="project-pill-tag">OpenWorld</span>
+                            </div>
+                            <button class="project-btn-effect">Hover Effect</button>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: MoCon Capture & Cleanup (Motion Capture) -->
+                    <div class="project-card" data-category="mocap">
+                        <div class="project-thumbnail-wrapper">
+                            <span class="project-badge-tag">MOCAP</span>
+                            <img src="images/project5.png" alt="MoCon capture and cleanup skeleton" class="project-thumbnail" id="project5-img">
+                        </div>
+                        <div class="project-card-body">
+                            <h3 class="project-card-title">MoCon Capture & Cleanup</h3>
+                            <p class="project-card-desc">
+                                Batch cleanup modules for optical motion data. Fills marker occlusion gaps, optimizes rotation interpolation, and loads data directly to skeletal rigs.
+                            </p>
+                            <ul class="project-meta-tech">
+                                <li><strong>Tools:</strong> MotionBuilder / Vicon SDK</li>
+                                <li><strong>Language:</strong> Python</li>
+                            </ul>
+                            <div class="project-tags-row">
+                                <span class="project-pill-tag">MoCap</span>
+                                <span class="project-pill-tag">PythonAPI</span>
+                                <span class="project-pill-tag">BatchClean</span>
+                            </div>
+                            <button class="project-btn-effect">Hover Effect</button>
+                        </div>
+                    </div>
+
                 </div>
-
-                <!-- Quest Category: Completed -->
-                <div class="quest-category">
-                    <h3 class="quest-category-title font-orbitron">COMPLETED QUESTS (HISTORY)</h3>
-                    
-                    <div class="quest-item completed-quest hud-panel">
-                        <div class="panel-header font-orbitron">
-                            <span>QUEST: COMBAT SYSTEM EXPANSION</span>
-                            <span class="quest-reward-badge completed">COMPLETED</span>
-                        </div>
-                        <div class="panel-body quest-body">
-                            <h4 class="quest-title">Gameplay Systems Programmer @ Titan Game Labs</h4>
-                            <p class="quest-duration font-orbitron">2021 - 2024</p>
-                            
-                            <ul class="quest-objectives">
-                                <li><span class="checkbox checked"></span> Designed custom frame-data hitbox parsing triggers for Unity-based fighting systems.</li>
-                                <li><span class="checkbox checked"></span> Created a Lua script automation pipeline inside CryEngine to reduce AI reaction lag by 15%.</li>
-                                <li><span class="checkbox checked"></span> Ran the optical motion capture lab setups: calibrated marker systems, directed actors, and cleaned keyframes.</li>
-                            </ul>
-                            
-                            <div class="quest-rewards font-space">
-                                <strong>ACQUIRED LOOT:</strong> Unity C#, CryEngine Lua, Motion capture cleanup, community management skills.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="quest-item completed-quest hud-panel">
-                        <div class="panel-header font-orbitron">
-                            <span>QUEST: PROTO-TRAVERSAL EXPERIMENT</span>
-                            <span class="quest-reward-badge completed">COMPLETED</span>
-                        </div>
-                        <div class="panel-body quest-body">
-                            <h4 class="quest-title">Junior Gameplay Developer @ Spark Byte Interactive</h4>
-                            <p class="quest-duration font-orbitron">2019 - 2021</p>
-                            
-                            <ul class="quest-objectives">
-                                <li><span class="checkbox checked"></span> Drafted early prototyping movement blueprints, grappling calculations, and trigger volumes.</li>
-                                <li><span class="checkbox checked"></span> Maintained git merge protocols and helped cleanup gameplay bug tickets daily.</li>
-                            </ul>
-                            
-                            <div class="quest-rewards">
-                                <strong>ACQUIRED LOOT:</strong> Blueprint mechanics, Physics vectors, Git versioning workflows.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- SECTION 6: CONTACT (SUBMIT QUEST) -->
-        <section id="contact" class="contact-section scroll-offset">
-            <div class="section-heading-wrapper">
-                <h2 class="section-title font-orbitron" id="heading-contact">
-                    <span class="title-index">// 05</span> SUBMIT A NEW QUEST
-                </h2>
-                <div class="title-line"></div>
-            </div>
+        <!-- COMMUNITY SECTION -->
+        <section id="community" class="scroll-offset">
+            <div class="container">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">COMMUNITY & IMPACT</h2>
+                    <div class="section-title-line"></div>
+                </div>
 
-            <div class="contact-grid">
-                <!-- Left: Instructions -->
-                <div class="hud-panel contact-info-panel">
-                    <div class="panel-header font-orbitron">
-                        <span>QUEST BOARD GUIDE</span>
-                    </div>
-                    <div class="panel-body font-space">
-                        <p class="guide-intro">
-                            Looking to recruit a gameplay programmer, seek support on motion capture pipelines, or need co-op assistance for systems optimization? Submit a quest card to transmit coordinates directly to my log.
-                        </p>
-                        
-                        <div class="reward-info-box">
-                            <h4 class="font-orbitron text-gradient font-glow">POTENTIAL QUEST REWARDS:</h4>
-                            <ul>
-                                <li>+ High performance, bug-free C++ classes</li>
-                                <li>+ Exquisite designer-facing blueprint architectures</li>
-                                <li>+ Clean motion capture anim clips and fast scripts</li>
-                                <li>+ Professional, transparent community communication</li>
+                <div class="community-panel">
+                    <div class="community-grid">
+                        <div class="community-text-col">
+                            <h3>PLAYER RELATIONSHIP MANAGEMENT</h3>
+                            <p>
+                                I believe player feedback is crucial in shaping satisfying gameplay. Beyond writing code, I actively manage playtests, review community combat clip logs to identify balance issues, and work alongside designers to smooth out latency bugs.
+                            </p>
+                            <ul class="community-perks-list">
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Managing public/private build tests and feedback channels.
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Analyzing frame logs of player balance complaints.
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Publishing developer logs explaining system revisions.
+                                </li>
                             </ul>
                         </div>
                         
-                        <div class="comms-freq font-orbitron">
-                            COMMS FREQUENCY: <span class="accent-text">2.4 GHz // ONLINE</span>
+                        <div class="community-social-card">
+                            <h4 class="social-card-title">COMMUNITY HUBS</h4>
+                            <p class="social-card-desc">
+                                Join our testing boards or follow design logs through social channels!
+                            </p>
+                            <div class="social-icons-wrapper">
+                                <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Follow on Twitter">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://discord.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Join Discord Server">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0c-.172-.386-.412-.875-.63-1.25a.078.078 0 00-.07-.037 19.736 19.736 0 00-4.885 1.515.069.069 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.873-.894.077.077 0 01-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 01.077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 01.078.009c.12.099.246.195.373.289a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.894.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Subscribe on YouTube">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Right: Interactive Form -->
-                <div class="hud-panel contact-form-panel">
-                    <div class="panel-header font-orbitron">
-                        <span>QUEST_POSTING_BOARD.LOG</span>
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" class="scroll-offset">
+            <div class="container">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">EXPERIENCE (QUEST LOG)</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="timeline-container">
+                    
+                    <!-- Job 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="timeline-job-title">Senior Gameplay Programmer</h3>
+                                    <div class="timeline-company">Quantum Forge Studios</div>
+                                </div>
+                                <span class="timeline-date-badge">2024 - PRESENT</span>
+                            </div>
+                            <ul class="timeline-bullet-list">
+                                <li>Architect and maintain C++ character controllers and state-machine components in Unreal Engine 5.</li>
+                                <li>Integrate skeletal control-rig warping and pose utilities for motion matching systems.</li>
+                                <li>Coordinate design reviews, run test build networks, and resolve replicator state errors to reduce gameplay latency.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="panel-body font-space">
-                        <form id="quest-form" class="quest-form" action="#" method="POST">
+
+                    <!-- Job 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="timeline-job-title">MoCap Specialist & Gameplay Developer</h3>
+                                    <div class="timeline-company">Titan Game Labs</div>
+                                </div>
+                                <span class="timeline-date-badge">2021 - 2024</span>
+                            </div>
+                            <ul class="timeline-bullet-list">
+                                <li>Calibrated optical marker capturing configurations, directed actors, and processed optical marker trajectories.</li>
+                                <li>Programmed custom input buffer parser logic in Unity for 2.5D combat systems.</li>
+                                <li>Optimized AI navigation node structures and reaction behaviors using Lua scripting.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Job 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3 class="timeline-job-title">Junior Gameplay Developer</h3>
+                                    <div class="timeline-company">Spark Byte Interactive</div>
+                                </div>
+                                <span class="timeline-date-badge">2019 - 2021</span>
+                            </div>
+                            <ul class="timeline-bullet-list">
+                                <li>Prototyped player movement mechanics, climbing loops, and custom logic blueprints.</li>
+                                <li>Wrote utility python tools for asset conversion and data parsing.</li>
+                                <li>Triaged QA bugs, cleaned ticket queues, and handled version control updates.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="scroll-offset">
+            <div class="container">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">GET IN TOUCH</h2>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="contact-layout">
+                    <!-- Left: Contact Options Buttons -->
+                    <div class="contact-options-panel">
+                        <h3 class="contact-options-title">DIRECT CHANNELS</h3>
+                        <p class="contact-options-desc">
+                            Select any direct communications link below to start a conversation or request code samples.
+                        </p>
+                        
+                        <div class="contact-links-list">
+                            <a href="mailto:ayomide@example.com" class="contact-link-btn btn-mail" id="link-mail">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                Email: ayomide@example.com
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link-btn btn-link" id="link-linkedin">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                                LinkedIn Profile
+                            </a>
+                            <a href="https://wa.me/1234567890" target="_blank" rel="noopener" class="contact-link-btn btn-wapp" id="link-whatsapp">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 2.766 1.498 4.793 1.499 5.347 0 9.7-.442 9.703-9.761.002-5.074-4.108-9.2-9.176-9.2C6.839.692 2.73 4.82 2.727 9.894c-.002 2.083.55 3.2 1.523 4.815l-.993 3.633 3.8-.958z"/>
+                                </svg>
+                                WhatsApp Comms
+                            </a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener" class="contact-link-btn btn-twit" id="link-twitter">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                </svg>
+                                Twitter / X
+                            </a>
+                            <a href="https://discord.com" target="_blank" rel="noopener" class="contact-link-btn btn-disc" id="link-discord">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                Discord Server
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Contact Form -->
+                    <div class="contact-form-panel">
+                        <h3 class="form-title">TRANSMIT QUEST SPECIFICATIONS</h3>
+                        <form id="contact-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="contact-name" class="form-input-label">NAME / SENDER</label>
+                                    <input type="text" id="contact-name" name="name" class="input-field" placeholder="e.g. Lead Producer Dave" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email" class="form-input-label">EMAIL ADDRESS</label>
+                                    <input type="email" id="contact-email" name="email" class="input-field" placeholder="e.g. dave@quantumforge.com" required>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="contact-subject" class="form-input-label">SUBJECT</label>
+                                    <input type="text" id="contact-subject" name="subject" class="input-field" placeholder="e.g. Gameplay Dev Campaign" required>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="contact-message" class="form-input-label">QUEST DETAILS / MESSAGE</label>
+                                    <textarea id="contact-message" name="message" class="input-field textarea-field" placeholder="Describe projects, platform targets, schedules, and deliverables..." required></textarea>
+                                </div>
+                            </div>
                             
-                            <div class="form-row">
-                                <label for="quest-sender" class="form-label font-orbitron">QUEST SENDER (YOUR NAME):</label>
-                                <input type="text" id="quest-sender" name="sender" class="form-input" placeholder="e.g. Lead Producer Dave" required>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="quest-email" class="form-label font-orbitron">REPLY FREQUENCY (EMAIL):</label>
-                                <input type="email" id="quest-email" name="email" class="form-input" placeholder="e.g. dave@quantumstudios.com" required>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="quest-type" class="form-label font-orbitron">QUEST TYPE (CONTRACT / ROLE):</label>
-                                <select id="quest-type" name="questType" class="form-select">
-                                    <option value="full-time">Full-time Senior Gameplay Dev Quest</option>
-                                    <option value="contract">Short-term Contract (Combat/Movement Rig)</option>
-                                    <option value="mocap">Mocap Pipeline Cleanup/Setup</option>
-                                    <option value="other">General Inquiries / Networking</option>
-                                </select>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="quest-details" class="form-label font-orbitron">QUEST DETAIL / OBJECTIVES:</label>
-                                <textarea id="quest-details" name="details" class="form-textarea" rows="5" placeholder="Specify project engine, platforms, timeline, or scope..." required></textarea>
-                            </div>
-
-                            <!-- Quest Form Status Alerts -->
-                            <div id="form-feedback" class="form-feedback"></div>
-
-                            <button type="submit" id="btn-submit-quest" class="hud-btn btn-primary font-orbitron">
-                                <span class="btn-glitch"></span>PUBLISH QUEST TO BOARD
-                            </button>
+                            <div class="form-alert-box" id="form-alert"></div>
+                            
+                            <button type="submit" class="btn btn-primary form-submit-btn" id="btn-form-submit">PUBLISH QUEST</button>
                         </form>
                     </div>
                 </div>
@@ -697,14 +636,26 @@
 
     </main>
 
-    <!-- HUD Footer -->
-    <footer class="hud-footer font-space">
-        <div class="hud-container footer-content">
-            <div class="footer-left">
-                <p>&copy; 2026 GAMEPLAY SYSTEMS ARCHITECT. ALL PERKS RESERVED.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content-wrapper">
+            <div>
+                <p>Copyright &copy; 2026 Victor Ayomide Awoyemi. All rights reserved.</p>
             </div>
-            <div class="footer-right">
-                <a href="#hero" class="footer-link">TOP ^</a>
+            <div class="footer-socials">
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="footer-social-btn" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
+            <div>
+                <a href="#hero" class="footer-btn-top">BACK TO TOP</a>
             </div>
         </div>
     </footer>
