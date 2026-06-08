@@ -190,4 +190,90 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 7. PROJECT MEDIA PREVIEW MODAL INTERACTIVITY
+    const projectCardsList = document.querySelectorAll('.project-card');
+    const modal = document.getElementById('project-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalVideo = document.getElementById('modal-video');
+    const modalImg = document.getElementById('modal-img');
+    const modalTitle = document.getElementById('modal-title');
+    const modalTags = document.getElementById('modal-tags');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalLinks = document.getElementById('modal-links');
+
+    if (modal && projectCardsList.length > 0) {
+        projectCardsList.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Ignore clicks on links within the card so they work normally
+                if (e.target.closest('.project-link') || e.target.closest('a')) {
+                    return;
+                }
+
+                // Get project details from card
+                const title = card.querySelector('.project-card-title').textContent;
+                const desc = card.querySelector('.project-card-desc').textContent;
+                const tagsHtml = card.querySelector('.project-tags-row').innerHTML;
+                const linksHtml = card.querySelector('.project-links-row').innerHTML;
+                
+                // Check if card has video or image
+                const videoElement = card.querySelector('.project-video-preview');
+                const imageElement = card.querySelector('.project-thumbnail');
+
+                // Populate modal info
+                modalTitle.textContent = title;
+                modalDesc.textContent = desc;
+                modalTags.innerHTML = tagsHtml;
+                modalLinks.innerHTML = linksHtml;
+
+                // Handle video vs image displaying
+                if (videoElement) {
+                    const sourceElement = videoElement.querySelector('source');
+                    if (sourceElement) {
+                        modalVideo.src = sourceElement.src;
+                        modalVideo.classList.add('active');
+                        modalImg.classList.remove('active');
+                        modalVideo.load();
+                        modalVideo.play().catch(err => console.log("Modal video play interrupted:", err));
+                    }
+                } else if (imageElement) {
+                    modalImg.src = imageElement.src;
+                    modalImg.classList.add('active');
+                    modalVideo.classList.remove('active');
+                    modalVideo.src = '';
+                }
+
+                // Show modal
+                modal.classList.add('active');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden'; // Disable background scrolling
+            });
+        });
+
+        // Close modal function
+        const closeModal = () => {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = ''; // Re-enable background scrolling
+            modalVideo.pause();
+            modalVideo.src = '';
+            modalImg.src = '';
+        };
+
+        modalClose.addEventListener('click', closeModal);
+
+        // Close when clicking background outside content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close with escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
+
 });
