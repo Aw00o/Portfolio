@@ -174,19 +174,82 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('contact-email').value.trim();
             const subject = document.getElementById('contact-subject').value.trim();
             const message = document.getElementById('contact-message').value.trim();
+            const honey = contactForm.querySelector('input[name="_honey"]').value;
 
+            // 1. Anti-bot honeypot check
+            if (honey) {
+                // Silently ignore bot submission
+                alertBox.className = 'form-alert-box success';
+                alertBox.innerHTML = `>> QUEST PLACED SUCCESSFULLY! Coordinates received.`;
+                contactForm.reset();
+                return;
+            }
+
+            // 2. Form field empty check
             if (!name || !email || !subject || !message) {
                 alertBox.className = 'form-alert-box error';
                 alertBox.textContent = '>> ERROR: Key coordinates missing. Check all inputs.';
                 return;
             }
 
-            // Success feedback
-            alertBox.className = 'form-alert-box success';
-            alertBox.innerHTML = `>> QUEST PLACED SUCCESSFULLY! Coordinates received from <strong>${name}</strong>. Channel route established.`;
+            // 3. Client-side anti-malware / injection checking
+            const dangerousPatterns = [
+                /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, // <script> tags
+                /javascript:/gi,                                        // JS protocol
+                /onload=/gi, /onerror=/gi, /onclick=/gi, /onmouseover=/gi, // inline event handlers
+                /union\s+select/gi, /select\s+.*\s+from/gi,             // SQLi attempts
+                /etc\/passwd/gi, /cmd\.exe/gi                          // shell traversal/RCE
+            ];
 
-            // Reset inputs
-            contactForm.reset();
+            const hasMalwarePattern = [name, email, subject, message].some(input => 
+                dangerousPatterns.some(pattern => pattern.test(input))
+            );
+
+            if (hasMalwarePattern) {
+                alertBox.className = 'form-alert-box error';
+                alertBox.textContent = '>> ERROR: Transmission rejected. Security anomaly detected.';
+                return;
+            }
+
+            // 4. Submit via FormSubmit AJAX endpoint
+            const submitBtn = document.getElementById('btn-form-submit');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = '>> TRANSMITTING...';
+            submitBtn.disabled = true;
+
+            fetch("https://formsubmit.co/ajax/awoyemivictor15@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response not ok');
+            })
+            .then(data => {
+                alertBox.className = 'form-alert-box success';
+                alertBox.innerHTML = `>> QUEST PLACED SUCCESSFULLY! Coordinates received from <strong>${name}</strong>. Channel route established.`;
+                contactForm.reset();
+            })
+            .catch(error => {
+                alertBox.className = 'form-alert-box error';
+                alertBox.textContent = '>> ERROR: Transmission failed. Check link or connection.';
+                console.error('Submission error:', error);
+            })
+            .finally(() => {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
     }
 
