@@ -1185,6 +1185,12 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .profile-card {
+        max-width: 360px;
+        margin: 0 auto 30px auto;
+        width: 100%;
+    }
+    
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1279,10 +1285,18 @@ body {
 
     .skills-grid {
         grid-template-columns: 1fr;
+        justify-items: center;
     }
 
     .traits-grid {
         grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .skill-card, .project-card, .trait-card {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
     }
 
     .experience-timeline::before {
@@ -1314,6 +1328,7 @@ body {
 
     .projects-grid {
         grid-template-columns: 1fr;
+        justify-items: center;
     }
 
     .community-grid {
