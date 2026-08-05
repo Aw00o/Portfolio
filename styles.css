@@ -1205,6 +1205,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .container {
+        width: 92%;
+    }
+
     .header {
         padding: 14px 0;
     }
@@ -1283,6 +1287,33 @@ body {
         max-width: 320px;
     }
 
+    .section-title {
+        font-size: 1.55rem;
+    }
+
+    .section-title-wrapper {
+        margin-bottom: 30px;
+    }
+
+    .about-bio-panel {
+        padding: 24px;
+    }
+
+    .about-social-buttons {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .btn-social {
+        flex: 1 1 calc(50% - 10px);
+        min-width: 130px;
+        justify-content: center;
+    }
+
+    .contact-form-panel, .contact-options-panel {
+        padding: 24px;
+    }
+
     .skills-grid {
         grid-template-columns: 1fr;
         justify-items: center;
@@ -1348,6 +1379,114 @@ body {
         flex-direction: column;
         gap: 15px;
         text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 94%;
+    }
+
+    .section-title {
+        font-size: 1.35rem;
+    }
+
+    .about-bio-panel, .contact-form-panel, .contact-options-panel, .profile-card {
+        padding: 18px 14px;
+    }
+
+    .bio-text {
+        font-size: 0.88rem;
+        line-height: 1.65;
+    }
+
+    .about-social-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-social {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .projects-filters {
+        gap: 6px;
+        margin-bottom: 25px;
+    }
+
+    .tab-filter {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+
+    .project-thumbnail-wrapper {
+        height: 160px;
+    }
+
+    .project-card-body {
+        padding: 16px;
+    }
+
+    .project-card-title {
+        font-size: 1.05rem;
+    }
+
+    .project-card-desc {
+        font-size: 0.82rem;
+    }
+
+    .skill-card {
+        padding: 16px;
+    }
+
+    .skill-card-title {
+        font-size: 0.95rem;
+    }
+
+    .skill-card-desc {
+        font-size: 0.82rem;
+    }
+
+    .trait-card {
+        padding: 12px;
+    }
+
+    .experience-item {
+        padding-left: 28px;
+    }
+
+    .experience-timeline::before {
+        left: 12px;
+    }
+
+    .experience-marker {
+        left: 8px;
+    }
+
+    .experience-role {
+        font-size: 1.1rem;
+    }
+
+    .experience-company {
+        font-size: 0.82rem;
+    }
+
+    .modal-content {
+        max-height: 85vh;
+    }
+
+    .modal-info {
+        padding: 16px;
+    }
+
+    .modal-close {
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+        font-size: 1.5rem;
     }
 }
 
